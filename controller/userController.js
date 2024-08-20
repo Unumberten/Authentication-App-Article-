@@ -82,6 +82,8 @@ exports.login = async (req, res) => {
   }
 };
 
+
+
 exports.getAllUsers = async (req, res) => {
   try {
     // Retrieve all users from the database
