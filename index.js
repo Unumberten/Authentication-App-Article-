@@ -50,7 +50,7 @@ app.post('/api/v1/payments/create-payment-intent', async (req, res) => {
 
 // Root Entry Home of the Api
 app.get("/", (req, res) => {
-  res.send("Welcome to Nodejs Authentication Tutorial a real");
+  res.send("Welcome to Nodejs Authentication Tutorial a real  the stripe api is here");
 });
 
 const options = {
