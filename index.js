@@ -2,7 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const { connectDb } = require("./config/database");
 const fs = require('fs');
-const https = require('https');
+
 const userRouter = require("./routes/user.Routes");
 const cors = require('cors');
 const Stripe = require('stripe');
@@ -53,13 +53,8 @@ app.get("/", (req, res) => {
   res.send("Welcome to Nodejs Authentication Tutorial a real  the stripe api is here");
 });
 
-const options = {
-  key: fs.readFileSync('localhost-key.pem'),
-  cert: fs.readFileSync('localhost.pem'),
-};
-
 
 // Start the server with HTTPS
-https.createServer(options, app).listen(4000, () => {
-  console.log('Server is running on https://localhost:4000');
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
