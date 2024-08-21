@@ -44,6 +44,9 @@ app.post('/api/v1/payments/create-payment-intent', async (req, res) => {
     } catch (error) {
         console.error("Error creating payment intent:", error);
         res.status(500).json({ error: error.message });
+        console.log("clientSecret:", clientSecret);
+console.log("paymentResult:", paymentResult);
+
     }
 });
 
