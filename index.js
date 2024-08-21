@@ -30,22 +30,23 @@ app.use("/api/v1/user", userRouter);
 
 // Import The payment routes
 app.post('/api/v1/payments/create-payment-intent', async (req, res) => {
-  const { totalPrice } = req.body;
+    const { totalPrice } = req.body;
 
-  try {
-    const paymentIntent = await stripe.paymentIntents.create({
-      amount: totalPrice * 100, // Convert to cents
-      currency: 'usd',
-    });
+    try {
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: totalPrice * 100, // Convert to cents
+            currency: 'usd',
+        });
 
-    res.send({
-      clientSecret: paymentIntent.client_secret,
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: error.message });
-  }
+        res.send({
+            clientSecret: paymentIntent.client_secret,
+        });
+    } catch (error) {
+        console.error("Error creating payment intent:", error);
+        res.status(500).json({ error: error.message });
+    }
 });
+
 
 
 // Root Entry Home of the Api
